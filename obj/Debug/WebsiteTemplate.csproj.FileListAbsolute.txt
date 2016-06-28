@@ -1,0 +1,13 @@
+c:\projects\WebsiteTemplate\bin\Debug\WebsiteTemplate.exe.config
+c:\projects\WebsiteTemplate\obj\Debug\WebsiteTemplate.csprojResolveAssemblyReference.cache
+c:\projects\WebsiteTemplate\bin\Debug\WebsiteTemplate.exe
+c:\projects\WebsiteTemplate\bin\Debug\WebsiteTemplate.pdb
+c:\projects\WebsiteTemplate\bin\Debug\Clifton.Core.dll
+c:\projects\WebsiteTemplate\bin\Debug\Clifton.Core.TemplateEngine.dll
+c:\projects\WebsiteTemplate\bin\Debug\Clifton.WebInterfaces.dll
+c:\projects\WebsiteTemplate\bin\Debug\Newtonsoft.Json.dll
+c:\projects\WebsiteTemplate\obj\Debug\WebsiteTemplate.exe
+c:\projects\WebsiteTemplate\obj\Debug\WebsiteTemplate.pdb
+C:\projects\webtemplate\bin\Debug\WebsiteTemplate.exe.config
+C:\projects\webtemplate\obj\Debug\WebsiteTemplate.exe
+C:\projects\webtemplate\obj\Debug\WebsiteTemplate.pdb

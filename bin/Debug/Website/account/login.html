@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="/css/account/login.css"/>
+    <title>Login</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+@{
+            @:<h1 class="text-center login-title">Sign in to continue to <@sitename@></h1>
+}
+            <div class="account-wall">
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt=""/>
+                <form role="form">
+                    <input id="email" type="text" class="form-control" placeholder="Email" required autofocus autocomplete/>
+                    <input id="password" type="password" class="form-control" placeholder="Password" required/>
+                    <button id="login" type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+                    <label class="checkbox pull-left" style="padding-left:20px">        <!-- padding moves the checkbox to the right so it lines up with left edge of button.  -->
+                        <input type="checkbox"/>
+                        Remember me
+                    </label>
+                    <a href="/account/forgotPassword" class="pull-right need-help">Forgot Password?</a><span class="clearfix"></span>
+                </form>
+            </div>
+            <a href="/account/register" class="text-center new-account">Create an account</a>
+<!-- If we move the Create an account below the Need help? so that it's inside the box, we need this: -->
+<!--            <span class="new-account"></span>    -->   <!-- needed to display bottom of the box! -->
+        </div>
+    </div>
+</div>
+<script>
+    // From example here: https://gist.github.com/bMinaise/7329874
+    $("#login").click(function (e) {
+        if ($("#email")[0].checkValidity() && $("#password")[0].checkValidity()) {
+            e.preventDefault();
+            var data = { email: $("#email").val(), password: $("#password").val() }
+            $.post("/account/login", data, 
+                function (data) {       // here the JSON is in the data var
+                    var json = $.parseJSON(JSON.stringify(data))
+                    if (json["state"] == "OK") {
+                        // use window.location.replace('...'); if you don't want it in the browser history.
+                        window.location.href = '/';
+                    } else if (json["state"] == "NotFound") {
+                        alertBad("Account Not Found!")
+                    } else if (json["state"] == "BadAccount") {
+                        alertBad("Email or password is incorrect.")
+                    } else if (json["state"] == "RegisterFirst") {
+                        alertBad("Check your email and confirm your registration before logging in.")
+                    }
+                }).fail(function (data) {
+                    alertBad("Login Error")
+                })
+        }
+    })
+</script>
+</body>
+</html>

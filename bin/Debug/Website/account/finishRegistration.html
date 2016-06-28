@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Finish Registration</title>
+</head>
+<body>
+@{
+    if (session.GetSessionObject<bool>(context, "TokenValidated"))
+    {
+        session.SetSessionObject(context, "TokenValidated", false);
+        @:<script>
+              @:alertGood("Registration completed.  Please login")
+        @:</script>
+    }
+    else
+    {
+        @:<script>
+              @:alertBad("Incorrect registration token")
+        @:</script>
+    }
+}
+</body>
+</html>
